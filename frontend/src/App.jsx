@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Map from './components/Map';
 import StatusPanel from './components/StatusPanel';
 import HistoryPanel from './components/HistoryPanel';
+import Footer from './components/Footer';
 
 export default function App() {
   const [busData, setBusData] = useState({ status: 'desconhecido', online: false, estimativa: 0 });
@@ -54,13 +55,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen lg:h-screen overflow-y-auto lg:overflow-hidden bg-transparent text-slate-800 dark:text-slate-200 font-sans p-4 md:p-6 lg:p-8 flex flex-col selection:bg-[#FACC15] selection:text-black transition-colors duration-500">
-      <style dangerouslySetInnerHTML={{__html: `
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: ${isDarkMode ? '#3f3f46' : '#cbd5e1'}; border-radius: 10px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: ${isDarkMode ? '#52525b' : '#94a3b8'}; }
-      `}} />
-
       <Header 
         isDarkMode={isDarkMode} 
         setIsDarkMode={setIsDarkMode} 
@@ -84,27 +78,7 @@ export default function App() {
 
         </div>
       </div>
-      
-      <footer className="w-full mt-auto lg:mt-6 pt-6 pb-2 border-t border-slate-200 dark:border-zinc-800 flex flex-col justify-center items-center gap-3 opacity-60 dark:opacity-50 transition-opacity shrink-0">
-        <div className="w-full max-w-5xl px-2 text-[10px] md:text-xs uppercase tracking-widest font-bold text-center flex flex-wrap justify-center items-center gap-x-3 gap-y-2 leading-relaxed">
-          <span className="w-full lg:w-auto mb-1 lg:mb-0 text-slate-500 dark:text-slate-400">Desenvolvido por:</span>
-          
-          <span className="whitespace-nowrap">Bianca Duarte Correia</span>
-          <span className="hidden lg:inline text-slate-300 dark:text-zinc-700">•</span>
-          
-          <span className="whitespace-nowrap">João Gabriel Marcelino dos Santos</span>
-          <span className="hidden lg:inline text-slate-300 dark:text-zinc-700">•</span>
-          
-          <span className="whitespace-nowrap">Gabrielly de Jesus Oliveira</span>
-          <span className="hidden lg:inline text-slate-300 dark:text-zinc-700">•</span>
-          
-          <span className="whitespace-nowrap">Henry de Souza Freitas</span>
-        </div>
-        
-        <div className="text-[10px] md:text-xs tracking-widest font-mono text-[#FACC15] mt-1">
-          VUPT.SMARTBUS@GMAIL.COM
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

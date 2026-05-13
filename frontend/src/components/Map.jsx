@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MapPin, AlertTriangle } from 'lucide-react';
+import BusMarker from './BusMarker';
+import MonumentMarker from './MonumentMarker';
+import StationMarker from './StationMarker';
 
 export default function Map({ busData, isDarkMode }) {
   const [busPos, setBusPos] = useState({ x: 400, y: 540, rot: 90 });
@@ -95,51 +98,11 @@ export default function Map({ busData, isDarkMode }) {
           <circle cx="400" cy="300" r="50" className="fill-slate-200 dark:fill-zinc-800 transition-colors duration-500" stroke="#3b82f6" strokeWidth="2" />
           <circle cx="400" cy="300" r="30" className="fill-white dark:fill-black transition-colors duration-500 animate-[spin_20s_linear_infinite] origin-center" stroke="#3b82f6" strokeWidth="1" strokeDasharray="5 5" style={{ transformOrigin: '400px 300px' }} />
 
-          <g transform="translate(400, 540)">
-            <rect x="-70" y="-30" width="140" height="60" fill="#3b82f6" rx="8" className="drop-shadow-[0_0_10px_rgba(59,130,246,0.2)] dark:drop-shadow-[0_0_15px_rgba(59,130,246,0.3)]" />
-            <text x="0" y="5" fill="#eff6ff" fontSize="16" fontWeight="bold" textAnchor="middle" className="uppercase tracking-widest">Etec / Escola</text>
-          </g>
+          <StationMarker />
 
-          <g transform="translate(400, 300)" className="group cursor-pointer hover:scale-110 transition-transform duration-300 origin-bottom" style={{ transformOrigin: '0px 20px' }}>
-            <rect x="-50" y="-60" width="100" height="80" fill="transparent" />
-            <path d="M -20 15 L 20 15 L 15 25 L -15 25 Z" className="fill-slate-300 dark:fill-zinc-700 stroke-slate-400 dark:stroke-zinc-600 transition-colors duration-500" strokeWidth="2" />
-            <rect x="-10" y="-5" width="20" height="20" className="fill-slate-400 dark:fill-zinc-600 transition-colors duration-500" />
-            <path d="M -6 -5 L -4 -40 L 4 -40 L 6 -5 Z" fill="#94a3b8" />
-            <path d="M -35 -25 Q -10 -22 0 -22 Q 10 -22 35 -25 L 35 -20 Q 10 -17 0 -17 Q -10 -17 -35 -20 Z" fill="#94a3b8" />
-            <circle cx="0" cy="-45" r="5" className="fill-slate-100 dark:fill-[#f8fafc] transition-colors duration-500" />
-            <path d="M -35 -25 L 35 -25 L 35 -20 L -35 -20 Z" className="fill-white opacity-40 dark:opacity-20" filter="drop-shadow(0 0 5px rgba(255,255,255,0.6))" />
-            <g className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-              <rect x="-80" y="-80" width="160" height="26" className="fill-white dark:fill-black stroke-slate-300 dark:stroke-[#3b82f6] transition-colors duration-500" rx="6" strokeWidth="1" />
-              <text x="0" y="-62" className="fill-blue-600 dark:fill-[#60a5fa] transition-colors duration-500" fontSize="12" textAnchor="middle" fontWeight="bold" style={{ letterSpacing: '0.05em' }}>Cristo Redentor de Lins</text>
-              <polygon points="-5,-54 5,-54 0,-48" className="fill-white dark:fill-black stroke-slate-300 dark:stroke-[#3b82f6] transition-colors duration-500" strokeWidth="1" />
-            </g>
-          </g>
+          <MonumentMarker />
 
-          <g 
-            transform={`translate(${busPos?.x || 400}, ${busPos?.y || 60}) rotate(${busPos?.rot || 0})`}
-            className={`${
-              busData.status === 'embarcando' ? 'drop-shadow-[0_0_15px_rgba(250,204,21,0.5)] dark:drop-shadow-[0_0_20px_rgba(250,204,21,0.8)]' : 
-              busData.status === 'em_movimento' ? 'drop-shadow-[0_0_10px_rgba(52,211,153,0.5)] dark:drop-shadow-[0_0_15px_rgba(52,211,153,0.8)]' : 
-              'drop-shadow-[0_0_5px_rgba(0,0,0,0.1)] dark:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]'
-            }`}
-          >
-            {busData.status === 'embarcando' && (
-              <circle cx="0" cy="0" r="30" fill="#facc15" className="animate-ping opacity-30" />
-            )}
-            <rect x="-14" y="-24" width="28" height="48" rx="6" fill={
-              busData.status === 'recolhido' ? '#64748b' : 
-              busData.status === 'embarcando' ? '#facc15' : '#10b981'
-            } />
-            <rect x="-10" y="-18" width="20" height="8" rx="2" className="fill-slate-800 dark:fill-black opacity-80 transition-colors" />
-            <rect x="-10" y="10" width="20" height="8" rx="2" className="fill-slate-800 dark:fill-black opacity-50 transition-colors" />
-            <rect x="-6" y="-5" width="12" height="10" rx="1" fill="#ffffff" opacity="0.3" />
-            {busData.status === 'sistema_pausado' && (
-              <g transform="translate(20, -20)">
-                <circle cx="0" cy="0" r="10" fill="#ef4444" className="animate-pulse" />
-                <text x="0" y="4" fill="#fff" fontSize="12" fontWeight="bold" textAnchor="middle">!</text>
-              </g>
-            )}
-          </g>
+          <BusMarker busPos={busPos} busData={busData} />
         </svg>
       </div>
       
