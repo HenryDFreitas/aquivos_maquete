@@ -17,8 +17,8 @@ export default function Map({ busData, isDarkMode }) {
     const deltaTime = time - lastTimeRef.current;
     lastTimeRef.current = time;
 
-    // 7.9 segundos por volta completa, acompanhando a maquete
-    const speed = (2 * Math.PI) / 7900; 
+    // 60 segundos por volta completa, acompanhando o script de apresentação
+    const speed = (2 * Math.PI) / 60000; 
     angleRef.current -= speed * deltaTime;
     if (angleRef.current < 0) {
       angleRef.current += 2 * Math.PI;
