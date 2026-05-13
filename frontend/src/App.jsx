@@ -72,7 +72,7 @@ export default function App() {
           <StatusPanel busData={busData} />
           
           {/* 3. IMPORTANTE: Este 'div' em volta do HistoryPanel força a altura no celular */}
-          <div className="flex-1 flex flex-col min-h-[300px] max-h-[400px] lg:max-h-none overflow-hidden">
+          <div className="flex-1 flex flex-col min-h-[300px] lg:min-h-0 max-h-[400px] lg:max-h-none overflow-hidden">
             <HistoryPanel notifications={notifications} />
           </div>
 

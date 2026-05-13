@@ -12,7 +12,7 @@ export default function HistoryPanel({ notifications }) {
   };
 
   return (
-    <div className="bg-slate-50 dark:bg-zinc-900 rounded-[2rem] border border-slate-200 dark:border-zinc-800 p-6 lg:p-8 flex-1 flex flex-col min-h-[350px] shadow-xl dark:shadow-2xl relative overflow-hidden group transition-colors duration-500">
+    <div className="bg-slate-50 dark:bg-zinc-900 rounded-[2rem] border border-slate-200 dark:border-zinc-800 p-6 lg:p-8 flex-1 flex flex-col min-h-[300px] lg:min-h-0 shadow-xl dark:shadow-2xl relative overflow-hidden group transition-colors duration-500">
       <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 transition-opacity group-hover:opacity-100 opacity-50 pointer-events-none" />
       <div className="flex items-center justify-between mb-8 relative z-10">
         <h3 className="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest text-sm flex items-center gap-3 transition-colors">
@@ -21,7 +21,7 @@ export default function HistoryPanel({ notifications }) {
         </h3>
       </div>
       
-      <div className="flex-1 overflow-y-auto pr-4 custom-scrollbar relative z-10">
+      <div className="flex-1 overflow-y-auto min-h-0 pr-4 custom-scrollbar relative z-10">
         <div className="absolute left-[19px] top-4 bottom-4 w-[2px] bg-slate-200 dark:bg-zinc-800 transition-colors duration-500" />
         
         <div className="space-y-8 pb-4">
